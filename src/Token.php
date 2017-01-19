@@ -130,6 +130,16 @@ class Token
     }
 
     /**
+     * Get Payment Method
+     *
+     * @return PaymentMethodInterface
+     */
+    public function getPaymentMethod()
+    {
+        return $this->paymentMethod;
+    }
+
+    /**
      * Token with Client Key
      *
      * @param string $clientKey
@@ -145,13 +155,13 @@ class Token
     }
 
     /**
-     * Get Payment Method
+     * Get Worldpay Client Key
      *
-     * @return PaymentMethodInterface
+     * @return string
      */
-    public function getPaymentMethod()
+    public function getClientKey()
     {
-        return $this->paymentMethod;
+        return $this->clientKey;
     }
 
     /**
@@ -184,7 +194,7 @@ class Token
         return [
             'reusable' => $this->isReusable(),
             'paymentMethod' => $this->paymentMethod->getParameters(),
-            'clientKey' => $this->clientKey
+            'clientKey' => $this->getClientKey()
         ];
     }
 }

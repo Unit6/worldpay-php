@@ -10,6 +10,8 @@
 
 namespace Unit6\Worldpay;
 
+use InvalidArgumentException;
+
 /**
  * Country Class
  *
@@ -22,7 +24,7 @@ class Country
      *
      * @var array
      */
-    protected static $countries = [
+    public static $countries = [
         'AF' => 'Afghanistan',
         'AX' => 'Aland Islands',
         'AL' => 'Albania',
@@ -278,14 +280,14 @@ class Country
      *
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * ISO 3166 Code of Country
      *
      * @var string
      */
-    private $code;
+    protected $code;
 
     /**
      * Create a new Country

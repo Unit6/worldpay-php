@@ -72,7 +72,7 @@ abstract class AbstractResource
         $filtered = [];
 
         foreach ($params as $key => $value) {
-            if (empty($value)) {
+            if (is_null($value)) {
                 continue;
             }
 

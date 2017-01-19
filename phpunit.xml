@@ -7,6 +7,25 @@
         <testsuite>
             <directory>./tests/</directory>
         </testsuite>
+        <testsuite name="InProgress">
+            <directory>./tests/ObfuscatedCardTest.php</directory>
+        </testsuite>
+        <testsuite name="Library">
+            <directory>./tests/WorldpayTest.php</directory>
+            <directory>./tests/CountryTest.php</directory>
+            <directory>./tests/AddressTest.php</directory>
+            <directory>./tests/CurrencyTest.php</directory>
+            <directory>./tests/ShopperTest.php</directory>
+            <directory>./tests/PaymentStatusTest.php</directory>
+            <directory>./tests/PaymentMethodTest.php</directory>
+            <directory>./tests/CardTypeTest.php</directory>
+            <directory>./tests/CardSchemeTest.php</directory>
+            <directory>./tests/EvidenceTest.php</directory>
+            <directory>./tests/TokenTest.php</directory>
+            <directory>./tests/APMTest.php</directory>
+            <directory>./tests/ObfuscatedCardTest.php</directory>
+            <directory>./tests/CardTest.php</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <blacklist>

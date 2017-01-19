@@ -11,7 +11,6 @@
 namespace Unit6\Worldpay;
 
 use InvalidArgumentException;
-use UnexpectedValueException;
 
 /**
  * Address Class
@@ -125,6 +124,86 @@ class Address extends AbstractResource
         $this->setParameters($params);
 
         $this->country = new Country($params['countryCode']);
+    }
+
+    /**
+     * Get Addresss Line
+     *
+     * @param int    $i   Address line number.
+     * @param string $sep Address line separator.
+     *
+     * @var string
+     */
+    public function getLine($i = null, $sep = ', ')
+    {
+        $lines = [
+            $this->address1,
+            $this->address2,
+            $this->address3,
+        ];
+
+        if ($i > 0) {
+            return (isset($lines[$i - 1]) ? $lines[$i - 1] : null);
+        }
+
+        // Implode to string and remove falsey values.
+        return implode($sep, array_filter($lines));
+    }
+
+    /**
+     * Get Address Postal Code
+     *
+     * @var string
+     */
+    public function getPostalCode()
+    {
+        return $this->postalCode;
+    }
+
+    /**
+     * Get Address City
+     *
+     * Also relates to the Postal Town in a country.
+     *
+     * @var string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Get Address State
+     *
+     * This will be a sub-division of a country.
+     *
+     * @var string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * Get Address Country Code
+     *
+     * The ISO 3166 alpha-2 2-letter country code.
+     *
+     * @var string
+     */
+    public function getCountryCode()
+    {
+        return $this->countryCode;
+    }
+
+    /**
+     * Get Country Instance
+     *
+     * @var Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**

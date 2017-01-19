@@ -194,7 +194,7 @@ class PaymentStatus
      *
      * @return array
      */
-    static function getConstants()
+    public static function getConstants()
     {
         $class = new ReflectionClass(__CLASS__);
 

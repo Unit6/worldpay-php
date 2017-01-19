@@ -45,7 +45,7 @@ class Evidence extends AbstractResource
      *
      * @var array
      */
-    protected static $fileExtensions = [
+    public static $fileExtensions = [
         'zip', 'doc', 'docx', 'jpg', 'jpeg', 'png', 'gif', 'tiff', 'pdf', 'txt'
     ];
 
@@ -54,7 +54,7 @@ class Evidence extends AbstractResource
      *
      * @var array
      */
-    protected static $required = [
+    public static $required = [
         'documentName',
         'documentDataInBase64'
     ];
@@ -135,7 +135,7 @@ class Evidence extends AbstractResource
     public function withDocumentName($name)
     {
         $clone = clone $this;
-        $clone->documentName = $token;
+        $clone->documentName = $name;
 
         return $clone;
     }

@@ -75,7 +75,7 @@ class APM extends AbstractResource implements PaymentMethodInterface
      *
      * @var array
      */
-    protected static $required = [
+    public static $required = [
         'apmName',
         'shopperCountryCode'
     ];

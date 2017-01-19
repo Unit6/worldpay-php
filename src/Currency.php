@@ -24,7 +24,7 @@ class Currency
      *
      * @var array
      */
-    protected static $currencies = [
+    public static $currencies = [
         'ARS' => ['exponent' => 2, 'name' => 'Nuevo Argentine Peso'],
         'AUD' => ['exponent' => 2, 'name' => 'Australian Dollar'],
         'BRL' => ['exponent' => 2, 'name' => 'Brazilian Real'],
@@ -79,6 +79,16 @@ class Currency
     protected $exponent;
 
     /**
+     * Currency Exponent Base
+     *
+     * Convert amount to and from smallest unit of currency
+     * to derive exponent which assumes a base of 10.
+     *
+     * @var integer
+     */
+    public static $base = 10;
+
+    /**
      * Create a new Currency
      *
      * @param string $name
@@ -130,6 +140,38 @@ class Currency
     public function getExponent()
     {
         return $this->exponent;
+    }
+
+    /**
+     * Get Decimal Amount
+     *
+     * Get monetary representation using exponent.
+     *
+     * @example '15.00'
+     *
+     * @param string|integer $amount
+     *
+     * @return string
+     */
+    public function toDecimal($amount)
+    {
+        return sprintf('%0.2f', ($amount / pow(self::$base, $this->getExponent())));
+    }
+
+    /**
+     * Get Amount as Integer
+     *
+     * Order should be made in the smallest exponent.
+     *
+     * @example '1500'
+     *
+     * @param string|float $amount
+     *
+     * @return integer
+     */
+    public function toInteger($amount)
+    {
+        return (integer) ($amount * pow(self::$base, $this->getExponent()));
     }
 
     /**

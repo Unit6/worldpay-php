@@ -79,10 +79,18 @@ class CardScheme
      *
      * @return array
      */
-    static function getConstants()
+    public static function getConstants($prefix = null)
     {
         $class = new ReflectionClass(__CLASS__);
 
-        return $class->getConstants();
+        $list = $class->getConstants();
+
+        if ($prefix) {
+            $list = array_filter($list, function ($key) use ($prefix) {
+                return (strpos($key, strtoupper($prefix . '_')) === 0);
+            }, ARRAY_FILTER_USE_KEY);
+        }
+
+        return $list;
     }
 }

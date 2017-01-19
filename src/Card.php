@@ -51,7 +51,7 @@ class Card extends AbstractCard
      *
      * @var array
      */
-    protected static $required = [
+    public static $required = [
         'name',
         'expiryMonth',
         'expiryYear',
